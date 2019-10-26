@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Mobile</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="email">email</string>
+    <string name="phone">phone</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_valid_email">Enter a valid email</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_valid_phone">Enter valid phone number</string>
+    <string name="password_limit">Minimum 8 characters</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login_error">Login error</string>
+    <string name="email_taken">Email is already taken</string>
+    <string name="error">Error</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="create_account">Create Account</string>
+    <string name="logout">Log Out</string>
+    <string name="btn_link_sign_up"/>
+    <string name="btn_login"/>
+    <string name="sign_up">Sign Up</string>
+    <string name="have_an_account">Have an account?Log In!</string>
+    <string name="successful_login">Welcome!</string>
+    <string name="not_registered">Do not have an account? Sign Up!</string>
+    <string name="login">Log In</string>
+    <string name="register">Register</string>
+</resources>
+
