@@ -29,14 +29,15 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button registerButton;
     private TextView loginLink;
-    private TextInputLayout emailFieldLayout;
+   /* private TextInputLayout emailFieldLayout;
     private TextInputLayout passwordFieldLayout;
     private TextInputLayout usernameFieldLayout;
-    private TextInputLayout phoneFieldLayout;
-    private TextInputEditText emailField;
-    private TextInputEditText passwordField;
-    private TextInputEditText usernameField;
-    private TextInputEditText phoneField;
+    private TextInputLayout phoneFieldLayout;*/
+    private EditText emailField;
+    private EditText passwordField;
+    private EditText usernameField;
+    private EditText phoneField;
+    private static final int passwordValue = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +65,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void fieldsInit() {
-        emailFieldLayout = findViewById(R.id.register_layout_email);
+       /* emailFieldLayout = findViewById(R.id.register_layout_email);
         passwordFieldLayout = findViewById(R.id.register_layout_password);
         usernameFieldLayout = findViewById(R.id.register_layout_username);
-        phoneFieldLayout = findViewById(R.id.register_layout_phone);
+        phoneFieldLayout = findViewById(R.id.register_layout_phone);*/
         emailField = findViewById(R.id.register_email);
         passwordField = findViewById(R.id.register_password);
         usernameField = findViewById(R.id.register_username);
@@ -114,44 +115,40 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isUsernameValid(final String username) {
         if (username.isEmpty()) {
-            usernameFieldLayout.setError(getString(R.string.enter_username));
-            usernameFieldLayout.requestFocus();
+            usernameField.setError(getString(R.string.enter_username));
             return false;
         } else {
-            usernameFieldLayout.setError(null);
+            usernameField.setError(null);
             return true;
         }
     }
 
     private boolean isPhoneValid(final String phone) {
-        if (phone.isEmpty() || (!phone.matches("^[0-9]$") && phone.length() < 10)) {
-            phoneFieldLayout.setError(getString(R.string.enter_valid_phone));
-            phoneFieldLayout.requestFocus();
+        if (phone.isEmpty() || (!phone.matches("^[0-9]$") && phone.length() < passwordValue)) {
+            phoneField.setError(getString(R.string.enter_valid_phone));
             return false;
         } else {
-            phoneFieldLayout.setError(null);
+            phoneField.setError(null);
             return true;
         }
     }
 
     private boolean isEmailValid(final String email) {
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailFieldLayout.setError(getString(R.string.enter_valid_email));
-            emailFieldLayout.requestFocus();
+            emailField.setError(getString(R.string.enter_valid_email));
             return false;
         } else {
-            emailFieldLayout.setError(null);
+            emailField.setError(null);
             return true;
         }
     }
 
     private boolean isPasswordValid(final String password) {
         if (password.isEmpty() || password.length() < 8) {
-            passwordFieldLayout.setError(getString(R.string.password_limit));
-            passwordFieldLayout.requestFocus();
+            passwordField.setError(getString(R.string.password_limit));
             return false;
         } else {
-            passwordFieldLayout.setError(null);
+            passwordField.setError(null);
             return true;
         }
     }

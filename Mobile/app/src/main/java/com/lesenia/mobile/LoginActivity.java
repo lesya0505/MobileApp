@@ -27,10 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button loginButton;
     private TextView signUpLink;
-    private TextInputEditText emailField;
-    private TextInputEditText passwordField;
-    private TextInputLayout emailFieldLayout;
-    private TextInputLayout passwordFieldLayout;
+    private EditText emailField;
+    private EditText passwordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +57,6 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         emailField = findViewById(R.id.login_email);
         passwordField = findViewById(R.id.login_password);
-        emailFieldLayout = findViewById(R.id.login_layout_email);
-        passwordFieldLayout = findViewById(R.id.login_layout_password);
         loginButton = findViewById(R.id.login_loginButton);
         signUpLink = findViewById(R.id.login_signUpLink);
     }
@@ -84,20 +80,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isEmailValid(final String email) {
         if (email.isEmpty()) {
-            emailFieldLayout.setError(getString(R.string.enter_email));
+            emailField.setError(getString(R.string.enter_email));
             return false;
         } else {
-            emailFieldLayout.setError(null);
+            emailField.setError(null);
             return true;
         }
     }
 
     private boolean isPasswordValid(final String password) {
         if (password.isEmpty() || password.length() < 8) {
-            passwordFieldLayout.setError(getString(R.string.invalid_password));
+            passwordField.setError(getString(R.string.invalid_password));
             return false;
         } else {
-            passwordFieldLayout.setError(null);
+            passwordField.setError(null);
             return true;
         }
     }

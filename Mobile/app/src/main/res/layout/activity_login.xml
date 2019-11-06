@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".LoginActivity"
@@ -21,36 +21,26 @@
         android:text="@string/login" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_layout_email"
         android:hint="@string/email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="0dp"
         android:fontFamily="@font/roboto_regular"
         android:background="@drawable/et_custom"
-        android:textSize="15sp"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_layout_password"
         android:hint="@string/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
-        android:padding="0dp"
         android:fontFamily="@font/roboto_regular"
         android:background="@drawable/et_custom"
         android:textSize="15sp"
@@ -60,20 +50,16 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/login_loginButton"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_custom"
         android:fontFamily="@font/roboto_regular"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
         android:textColor="@android:color/white"
@@ -83,7 +69,6 @@
         android:id="@+id/login_signUpLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="@string/not_registered" />
 
 </LinearLayout>
