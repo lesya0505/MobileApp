@@ -17,14 +17,10 @@
         <activity android:name="com.lesenia.mobile.LoginActivity"
             android:noHistory="true"
             android:label="Log In">
-<!--            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
         <activity android:name="com.lesenia.mobile.RegisterActivity"
             android:noHistory="true"
-            android:label="Sign Up">
+            android:label="Register">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

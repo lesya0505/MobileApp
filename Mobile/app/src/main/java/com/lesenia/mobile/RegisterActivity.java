@@ -29,15 +29,10 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button registerButton;
     private TextView loginLink;
-   /* private TextInputLayout emailFieldLayout;
-    private TextInputLayout passwordFieldLayout;
-    private TextInputLayout usernameFieldLayout;
-    private TextInputLayout phoneFieldLayout;*/
-    private EditText emailField;
-    private EditText passwordField;
-    private EditText usernameField;
-    private EditText phoneField;
-    private static final int passwordValue = 10;
+    private TextInputEditText emailField;
+    private TextInputEditText passwordField;
+    private TextInputEditText usernameField;
+    private TextInputEditText phoneField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void fieldsInit() {
-       /* emailFieldLayout = findViewById(R.id.register_layout_email);
-        passwordFieldLayout = findViewById(R.id.register_layout_password);
-        usernameFieldLayout = findViewById(R.id.register_layout_username);
-        phoneFieldLayout = findViewById(R.id.register_layout_phone);*/
         emailField = findViewById(R.id.register_email);
         passwordField = findViewById(R.id.register_password);
         usernameField = findViewById(R.id.register_username);
@@ -124,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean isPhoneValid(final String phone) {
-        if (phone.isEmpty() || (!phone.matches("^[0-9]$") && phone.length() < passwordValue)) {
+        if (phone.isEmpty() || (!phone.matches("^[0-9]$") && phone.length() < 10)) {
             phoneField.setError(getString(R.string.enter_valid_phone));
             return false;
         } else {

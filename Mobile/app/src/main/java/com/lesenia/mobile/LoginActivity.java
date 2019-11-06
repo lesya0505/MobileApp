@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button loginButton;
     private TextView signUpLink;
-    private EditText emailField;
-    private EditText passwordField;
+    private TextInputEditText emailField;
+    private TextInputEditText passwordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,10 +99,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isDataValid(final String email, final String password) {
-        boolean emailValid = isEmailValid(email);
-        boolean passwordValid = isPasswordValid(password);
-
-        return emailValid && passwordValid;
+        return isEmailValid(email) && isPasswordValid(password);
     }
 
     private void loginError() {
