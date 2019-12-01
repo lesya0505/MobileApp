@@ -1,15 +1,13 @@
 package com.lesenia.mobile;
 
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.widget.LinearLayout;
+import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.widget.LinearLayout;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -32,11 +30,10 @@ public class DataListActivity extends AppCompatActivity {
         initViews();
         registerNetworkMonitoring();
         loadPharmacy();
-
     }
 
     private void registerNetworkMonitoring() {
-        IntentFilter filter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+        IntentFilter filter = new IntentFilter("android.net.conn.CONNECTIVITY_ACTION");
         NetworkChangeReceiver receiver = new NetworkChangeReceiver(linearLayout);
         this.registerReceiver(receiver, filter);
     }
@@ -52,13 +49,13 @@ public class DataListActivity extends AppCompatActivity {
 
     private void loadPharmacy(){
         swipeRefreshLayout.setRefreshing(true);
-        final PharmacyApi pharmacyApi = getRetrofitClientInstance().getPharmacyApi();
+        final PharmacyApi pharmacyApi = getApp().getPharmacyApi();
         final Call<List<Pharmacy>> call = pharmacyApi.getPharmacy();
 
         call.enqueue(new Callback<List<Pharmacy>>() {
             @Override
-            public void onResponse(final Call<List<Pharmacy>> call,
-                                   final Response<List<Pharmacy>> response) {
+            public void onResponse( Call<List<Pharmacy>> call,
+                                    Response<List<Pharmacy>> response) {
                 adapter = new PharmacyAdapter(response.body());
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
@@ -81,10 +78,9 @@ public class DataListActivity extends AppCompatActivity {
                     }
                 }
         );
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
     }
 
-    private RetrofitClientInstance getRetrofitClientInstance(){
-        return ((RetrofitClientInstance) getApplication());
+    private App getApp(){
+        return ((App) getApplication());
     }
 }

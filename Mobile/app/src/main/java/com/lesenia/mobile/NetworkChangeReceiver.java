@@ -31,13 +31,13 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private boolean isOnline(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if (cm == null) {
+        if (connectivityManager == null) {
             return false;
         }
 
-        NetworkCapabilities capabilities = cm.getNetworkCapabilities(cm.getActiveNetwork());
+        NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
         return capabilities != null &&
                 (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
                         capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI));

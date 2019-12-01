@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @SuppressLint("Registered")
-public class RetrofitClientInstance extends Application {
+public class App extends Application {
 
     private PharmacyApi pharmacyApi;
     private FirebaseAuth auth;

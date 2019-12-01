@@ -17,7 +17,7 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Medici
 
     private List<Pharmacy> pharmacyList;
 
-   public PharmacyAdapter(List<Pharmacy> pharmacyList){
+  public PharmacyAdapter(List<Pharmacy> pharmacyList){
         this.pharmacyList = pharmacyList;
     }
 
@@ -42,6 +42,8 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Medici
 
     @Override
     public int getItemCount() {
+        if (pharmacyList == null)
+            return 0;
         return pharmacyList.size();
     }
 

@@ -1,16 +1,12 @@
 package com.lesenia.mobile;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        fieldsInit();
+        initViews();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void fieldsInit() {
-        auth = FirebaseAuth.getInstance();
+    private void initViews() {
+        auth = getApp().getAuth();
         emailField = findViewById(R.id.login_email);
         passwordField = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_loginButton);
@@ -69,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(LoginActivity.this, UserActivity.class));
+                                startActivity(new Intent(LoginActivity.this, DataListActivity.class));
                             } else {
                                 loginError();
                             }
@@ -104,5 +100,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginError() {
         Toast.makeText(LoginActivity.this, getString(R.string.login_error), Toast.LENGTH_LONG).show();
+    }
+
+    private App getApp(){
+        return ((App) getApplication());
     }
 }
