@@ -2,15 +2,12 @@ package com.lesenia.mobile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +36,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        fieldsInit();
+        initViews();
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +57,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void fieldsInit() {
+    private void initViews() {
         emailField = findViewById(R.id.register_email);
         passwordField = findViewById(R.id.register_password);
         usernameField = findViewById(R.id.register_username);
         phoneField = findViewById(R.id.register_phone);
-        auth = FirebaseAuth.getInstance();
+        auth = auth = getApp().getAuth();
         registerButton = findViewById(R.id.registerButton);
         loginLink = findViewById(R.id.register_loginLink);
     }
@@ -97,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         RegisterActivity.this
-                                .startActivity(new Intent(RegisterActivity.this, UserActivity.class));
+                                .startActivity(new Intent(RegisterActivity.this, DataListActivity.class));
                     }
                 }
             });
@@ -145,11 +143,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean isDataValid(final String username, final String phone, final String email, final String password) {
-        boolean usernameValid = isUsernameValid(username);
-        boolean phoneValid = isPhoneValid(phone);
-        boolean emailValid = isEmailValid(email);
-        boolean passwordValid = isPasswordValid(password);
+        return isUsernameValid(username) && isPhoneValid(phone) && isEmailValid(email) &&isPasswordValid(password);
+    }
 
-        return usernameValid && phoneValid && emailValid && passwordValid;
+    private App getApp(){
+        return ((App) getApplication());
     }
 }
