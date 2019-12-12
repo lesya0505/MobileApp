@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import android.app.Notification;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -32,5 +34,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         ).attach();
+        FirebaseMessaging.getInstance().subscribeToTopic("NEWS");
     }
 }
