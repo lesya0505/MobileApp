@@ -1,9 +1,12 @@
 package com.lesenia.mobile;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,9 +18,11 @@ import java.util.List;
 
 public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MedicineViewHolder> {
 
+    private final Context context;
     private List<Pharmacy> pharmacyList;
 
-  public PharmacyAdapter(List<Pharmacy> pharmacyList){
+    PharmacyAdapter(Context context, List<Pharmacy> pharmacyList) {
+        this.context = context;
         this.pharmacyList = pharmacyList;
     }
 
@@ -34,10 +39,27 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Medici
         Picasso.get().load(pharmacyList.get(position).getPhotoUrl()).into(holder.photoUrl);
         holder.name.setText(pharmacyList.get(position).getName());
         holder.category.setText(pharmacyList.get(position).getCategory());
-        holder.packaging.setText(pharmacyList.get(position).getPackaging());
         holder.producer.setText(pharmacyList.get(position).getProducer());
         holder.price.setText(pharmacyList.get(position).getPrice());
         holder.components.setText(pharmacyList.get(position).getComponents());
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openItemDetails(position);
+            }
+
+            private void openItemDetails(int position) {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("name", pharmacyList.get(position).getName());
+                intent.putExtra("category", pharmacyList.get(position).getCategory());
+                intent.putExtra("producer", pharmacyList.get(position).getProducer());
+                intent.putExtra("price", pharmacyList.get(position).getPrice());
+                intent.putExtra("components", pharmacyList.get(position).getComponents());
+                intent.putExtra("image", pharmacyList.get(position).getPhotoUrl());
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -47,11 +69,11 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Medici
         return pharmacyList.size();
     }
 
-    class MedicineViewHolder extends RecyclerView.ViewHolder{
+    class MedicineViewHolder extends RecyclerView.ViewHolder {
 
+        private LinearLayout parentLayout;
         private TextView name;
         private TextView category;
-        private TextView packaging;
         private TextView producer;
         private TextView price;
         private TextView components;
@@ -60,13 +82,13 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Medici
         private MedicineViewHolder(final View itemView) {
             super(itemView);
 
-            photoUrl = itemView.findViewById(R.id.item_medicine_image_view);
-            name =  itemView.findViewById(R.id.item_medicine_name);
+            photoUrl = itemView.findViewById(R.id.item_medicine_image);
+            name = itemView.findViewById(R.id.item_medicine_name);
             category = itemView.findViewById(R.id.item_medicine_category);
-            packaging =  itemView.findViewById(R.id.item_medicine_packaging);
-            producer =  itemView.findViewById(R.id.item_medicine_producer);
-            price =  itemView.findViewById(R.id.item_medicine_price);
+            producer = itemView.findViewById(R.id.item_medicine_producer);
+            price = itemView.findViewById(R.id.item_medicine_price);
             components = itemView.findViewById(R.id.item_medicine_components);
+            parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
 }

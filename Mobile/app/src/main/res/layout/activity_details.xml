@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_view"
+    android:gravity="center_horizontal"
+    android:paddingTop="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingBottom="24dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36sp"
+        android:fontFamily="@font/rushing"
+        android:layout_marginBottom="10dp"
+        android:text="@string/details"/>
+
+    <ImageView
+        android:id="@+id/details_image"
+        android:layout_width="326dp"
+        android:layout_height="163dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/image" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/details_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="@color/colorPrimaryDark">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/details_category"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/details_producer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/details_price"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/details_components"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp" />
+</LinearLayout>
