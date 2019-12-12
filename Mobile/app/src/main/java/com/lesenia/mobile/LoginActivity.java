@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.annotation.NonNull;
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        auth = getApp().getAuth();
+        auth = getRetrofitEx().getAuth();
         emailField = findViewById(R.id.login_email);
         passwordField = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_loginButton);
@@ -65,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(LoginActivity.this, DataListActivity.class));
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             } else {
                                 loginError();
                             }
@@ -102,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(LoginActivity.this, getString(R.string.login_error), Toast.LENGTH_LONG).show();
     }
 
-    private App getApp(){
-        return ((App) getApplication());
+    private RetrofitEx getRetrofitEx() {
+        return ((RetrofitEx) getApplication());
     }
 }

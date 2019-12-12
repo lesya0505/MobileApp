@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
-    
+
     private FirebaseAuth auth;
     private Button registerButton;
     private TextView loginLink;
@@ -62,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.register_password);
         usernameField = findViewById(R.id.register_username);
         phoneField = findViewById(R.id.register_phone);
-        auth = auth = getApp().getAuth();
+        auth = auth = getRetrofitEx().getAuth();
         registerButton = findViewById(R.id.registerButton);
         loginLink = findViewById(R.id.register_loginLink);
     }
@@ -95,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         RegisterActivity.this
-                                .startActivity(new Intent(RegisterActivity.this, DataListActivity.class));
+                                .startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                     }
                 }
             });
@@ -143,10 +144,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean isDataValid(final String username, final String phone, final String email, final String password) {
-        return isUsernameValid(username) && isPhoneValid(phone) && isEmailValid(email) &&isPasswordValid(password);
+        return isUsernameValid(username) && isPhoneValid(phone) && isEmailValid(email) && isPasswordValid(password);
     }
 
-    private App getApp(){
-        return ((App) getApplication());
+    private RetrofitEx getRetrofitEx() {
+        return ((RetrofitEx) getApplication());
     }
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+            <ImageView
+                android:id="@+id/avatar_picture"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/avatar_picture" />
+
+            <Button
+                android:id="@+id/upload_picture"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/update" />
+
+            <TextView
+                android:id="@+id/account_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/account_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/account_new_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_new_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/account_new_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/email_submit_btn"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/update"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/account_new_username_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_new_username">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/account_new_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/name_submit_btn"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/update"
+                android:textColor="@color/colorPrimaryDark" />
+</LinearLayout>
