@@ -31,6 +31,28 @@
     <string name="price">Price: </string>
     <string name="components">Components: </string>
     <string name="no_internet">No Internet connection</string>
+<<<<<<< Updated upstream
     <string name="failure">Update failure</string>
+=======
+    <string name="update_failure">Update failure</string>
+    <string name="details">Details</string>
+    <string name="account">Account</string>
+    <string name="image_uploaded">Image uploaded!</string>
+    <string name="username_updated">Username is updated!</string>
+    <string name="email_updated">Email is updated!</string>
+    <string name="tab2">Tab2</string>
+    <string name="avatar_picture">Avatar picture</string>
+    <string name="update">Update</string>
+    <string name="enter_new_username">Enter new username</string>
+    <string name="enter_new_email">Enter new email</string>
+    <string name="image">Image</string>
+    <string name="msg_token_fmt">OK</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_post">PostActivity</string>
+    <string name="notification">Notification is opened!</string>
+    <string name="list_updated">List updated!</string>
+    <string name="show">Show</string>>
+
+>>>>>>> Stashed changes
 </resources>
 

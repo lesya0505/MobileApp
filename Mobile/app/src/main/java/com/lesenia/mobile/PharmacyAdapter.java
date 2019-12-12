@@ -15,9 +15,17 @@ import java.util.List;
 
 public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MedicineViewHolder> {
 
+<<<<<<< Updated upstream
     private List<Pharmacy> pharmacyList;
 
   public PharmacyAdapter(List<Pharmacy> pharmacyList){
+=======
+    private final Context context;
+    public List<Pharmacy> pharmacyList;
+
+    public  PharmacyAdapter(Context context, List<Pharmacy> pharmacyList) {
+        this.context = context;
+>>>>>>> Stashed changes
         this.pharmacyList = pharmacyList;
     }
 

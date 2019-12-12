@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -31,5 +35,15 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+<<<<<<< Updated upstream
 }
 apply plugin: 'com.google.gms.google-services'
+=======
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
+    implementation 'com.google.firebase:firebase-messaging:20.0.1'
+    apply plugin: 'com.google.gms.google-services'
+}
+>>>>>>> Stashed changes
