@@ -43,6 +43,12 @@
     <string name="enter_new_username">Enter new username</string>
     <string name="enter_new_email">Enter new email</string>
     <string name="image">Image</string>
+    <string name="msg_token_fmt">OK</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_post">PostActivity</string>
+    <string name="notification">Notification is opened!</string>
+    <string name="list_updated">List updated!</string>
+    <string name="show">Show</string>>
 
 </resources>
 

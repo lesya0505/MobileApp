@@ -19,9 +19,9 @@ import java.util.List;
 public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MedicineViewHolder> {
 
     private final Context context;
-    private List<Pharmacy> pharmacyList;
+    public List<Pharmacy> pharmacyList;
 
-    PharmacyAdapter(Context context, List<Pharmacy> pharmacyList) {
+    public  PharmacyAdapter(Context context, List<Pharmacy> pharmacyList) {
         this.context = context;
         this.pharmacyList = pharmacyList;
     }

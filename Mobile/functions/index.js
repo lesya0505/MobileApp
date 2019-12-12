@@ -17,7 +17,7 @@ const json = [
         "packaging" : "Таблетки",
         "producer": "Chinoin",
         "price": "216 грн.",
-        "photoUrl": "https://media.add.ua/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/_/-/_-100_5/add.ua-chinoin-(vengrija)-no-shpa-40-mg-tabletki-%E2%84%96100-34.jpg"
+        "photoUrl": "https://media.add.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/n/o/no_spa_40mg__24_02_1/add.ua-chinoin-(vengrija)-no-shpa-40-mg-tabletki-%E2%84%9624-39.jpg"
     },
      {
         "name": "Амізон",
