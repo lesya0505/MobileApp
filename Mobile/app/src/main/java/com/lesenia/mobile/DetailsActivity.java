@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.lesenia.mobile.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -70,11 +71,7 @@ public class DetailsActivity extends AppCompatActivity {
         components = findViewById(R.id.details_components);
         photoUrl = findViewById(R.id.details_image);
     }
-    private void setInfo(String nameInfo, String categoryInfo,
-                         String packagingInfo, String producerInfo,
-                         String priceInfo, String componentsInfo, String photoUrlInfo) {
 
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

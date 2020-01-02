@@ -34,20 +34,12 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String email = Objects.requireNonNull(Objects.requireNonNull(emailField.getText()).toString().trim());
-                final String password = Objects.requireNonNull(passwordField.getText()).toString().trim();
-                logIn(email, password);
-            }
+        loginButton.setOnClickListener(view -> {
+            final String email = Objects.requireNonNull(Objects.requireNonNull(emailField.getText()).toString().trim());
+            final String password = Objects.requireNonNull(passwordField.getText()).toString().trim();
+            logIn(email, password);
         });
-        signUpLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-            }
-        });
+        signUpLink.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
 
     private void initViews() {
@@ -61,15 +53,12 @@ public class LoginActivity extends AppCompatActivity {
     private void logIn(final String email, final String password) {
 
         if (isDataValid(email, password)) {
-            Task<AuthResult> authResultTask = auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            } else {
-                                loginError();
-                            }
+            Task<AuthResult> authResult = auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(LoginActivity.this, task -> {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        } else {
+                            loginError();
                         }
                     });
         }

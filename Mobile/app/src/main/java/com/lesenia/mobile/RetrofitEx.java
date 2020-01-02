@@ -30,7 +30,7 @@ public class RetrofitEx extends Application {
 
     private PharmacyApi createPharmacyApi() {
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://us-central1-mobile-88bce.cloudfunctions.net/pharmacy/")
+                .baseUrl("https://mobile-88bce.firebaseio.com/pharmacy/hSvj37OFasbbEu7KMGEp/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

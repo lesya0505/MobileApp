@@ -39,23 +39,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         initViews();
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String username = Objects.requireNonNull(usernameField.getText()).toString().trim();
-                final String phone = Objects.requireNonNull(phoneField.getText()).toString().trim();
-                final String email = Objects.requireNonNull(emailField.getText()).toString().trim();
-                final String password = Objects.requireNonNull(passwordField.getText()).toString().trim();
-                Register(email, password, username, phone);
-            }
+        registerButton.setOnClickListener(view -> {
+            final String username = Objects.requireNonNull(usernameField.getText()).toString().trim();
+            final String phone = Objects.requireNonNull(phoneField.getText()).toString().trim();
+            final String email = Objects.requireNonNull(emailField.getText()).toString().trim();
+            final String password = Objects.requireNonNull(passwordField.getText()).toString().trim();
+            Register(email, password, username, phone);
         });
 
-        loginLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            }
-        });
+        loginLink.setOnClickListener(view -> startActivity(new Intent(RegisterActivity.this, LoginActivity.class)));
     }
 
     private void initViews() {
@@ -63,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.register_password);
         usernameField = findViewById(R.id.register_username);
         phoneField = findViewById(R.id.register_phone);
-        auth = auth = getRetrofitEx().getAuth();
+        auth = getRetrofitEx().getAuth();
         registerButton = findViewById(R.id.registerButton);
         loginLink = findViewById(R.id.register_loginLink);
     }
@@ -71,15 +63,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void Register(final String email, final String password, final String username, final String phone) {
         if (isDataValid(username, phone, email, password)) {
             auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, getString(R.string.email_taken),
-                                        Toast.LENGTH_LONG).show();
-                            } else {
-                                onCompleteSuccess(username);
-                            }
+                    .addOnCompleteListener(RegisterActivity.this, task -> {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, getString(R.string.email_taken),
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            onCompleteSuccess(username);
                         }
                     });
         }
@@ -91,13 +80,10 @@ public class RegisterActivity extends AppCompatActivity {
                 .setDisplayName(username).build();
 
         if (user != null) {
-            user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        RegisterActivity.this
-                                .startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                    }
+            user.updateProfile(profileUpdates).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    RegisterActivity.this
+                            .startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                 }
             });
         }
