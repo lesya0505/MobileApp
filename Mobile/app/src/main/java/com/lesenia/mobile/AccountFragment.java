@@ -62,11 +62,11 @@ public class AccountFragment extends Fragment {
         initViews(Objects.requireNonNull(getView()));
         getUserInfo();
 
-        usernameSubmitBtn.setOnClickListener(view1 -> onPressUsernameUpdateBtn());
+        usernameSubmitBtn.setOnClickListener(UpdateUserNameView -> onPressUsernameUpdateBtn());
 
-        emailSubmitBtn.setOnClickListener(view12 -> onPressEmailUpdateBtn());
+        emailSubmitBtn.setOnClickListener(UpdateEmeilView -> onPressEmailUpdateBtn());
 
-        pictureBtn.setOnClickListener(view13 -> uploadProfilePicture());
+        pictureBtn.setOnClickListener(UpdateProfilePictureView -> uploadProfilePicture());
 
     }
     private void onPressEmailUpdateBtn() {
@@ -100,14 +100,12 @@ public class AccountFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1){
-            if (resultCode == RESULT_OK){
+        if ((requestCode == 1) && (resultCode == RESULT_OK)){
                 Uri ImageData = Objects.requireNonNull(data).getData();
                 ImageName.putFile(Objects.requireNonNull(ImageData)).addOnSuccessListener(taskSnapshot -> Toast.makeText(getActivity(),getString(R.string.image_uploaded),Toast.LENGTH_SHORT).show());
 
                 placeImage();
             }
-        }
     }
 
     private void initViews(View root){
