@@ -62,11 +62,26 @@ public class AccountFragment extends Fragment {
         initViews(Objects.requireNonNull(getView()));
         getUserInfo();
 
-        usernameSubmitBtn.setOnClickListener(UpdateUserNameView -> onPressUsernameUpdateBtn());
+        usernameSubmitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AccountFragment.this.onPressUsernameUpdateBtn();
+            }
+        });
 
-        emailSubmitBtn.setOnClickListener(UpdateEmeilView -> onPressEmailUpdateBtn());
+        emailSubmitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AccountFragment.this.onPressEmailUpdateBtn();
+            }
+        });
 
-        pictureBtn.setOnClickListener(UpdateProfilePictureView -> uploadProfilePicture());
+        pictureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AccountFragment.this.uploadProfilePicture();
+            }
+        });
 
     }
     private void onPressEmailUpdateBtn() {
@@ -100,12 +115,14 @@ public class AccountFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if ((requestCode == 1) && (resultCode == RESULT_OK)){
+        if (requestCode == 1){
+            if (resultCode == RESULT_OK){
                 Uri ImageData = Objects.requireNonNull(data).getData();
                 ImageName.putFile(Objects.requireNonNull(ImageData)).addOnSuccessListener(taskSnapshot -> Toast.makeText(getActivity(),getString(R.string.image_uploaded),Toast.LENGTH_SHORT).show());
 
                 placeImage();
             }
+        }
     }
 
     private void initViews(View root){

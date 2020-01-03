@@ -25,7 +25,8 @@ public class Pharmacy {
     private String photoUrl;
 
     public Pharmacy(final String name, final String category,
-                    final String producer, final String components) {
+                    final String producer, final String price,
+                    final String components, final String photoUrl) {
         this.name = name;
         this.category = category;
         this.producer = producer;
@@ -34,25 +35,58 @@ public class Pharmacy {
         this.photoUrl =photoUrl;
     }
 
+    public Pharmacy(String name, String category, String producer, String price) {
+        this.name = name;
+        this.category = category;
+        this.producer = producer;
+        this.price = price;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
         return category;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getProducer() {
         return producer;
     }
-    public String getComponents(){
+
+    public void setProducer(String producer) {
+        this.producer = producer;
+    }
+
+    public String getComponents() {
         return components;
+    }
+
+    public void setComponents(String components) {
+        this.components = components;
     }
 
     public String getPrice() {
         return price;
     }
-    public String getPhotoUrl(){
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getPhotoUrl() {
         return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

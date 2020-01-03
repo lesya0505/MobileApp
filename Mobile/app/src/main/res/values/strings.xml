@@ -52,6 +52,8 @@
     <string name="add_medecine">Add medecine</string>
     <string name="required">Recuired</string>
     <string name="submit">Submit</string>
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
 
 </resources>
 

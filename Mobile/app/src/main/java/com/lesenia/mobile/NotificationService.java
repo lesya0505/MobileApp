@@ -80,8 +80,8 @@ public class NotificationService extends com.google.firebase.messaging.FirebaseM
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager;
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         assert notificationManager != null;
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());

@@ -12,5 +12,5 @@ public interface PharmacyApi {
     Call<List<Pharmacy>> getPharmacy();
 
     @POST("pharmacy")
-    Call<Pharmacy> createPharmacy(@Body Pharmacy pharmacy);
+    Call<Pharmacy> createPharmacy(Pharmacy pharmacy);
 }

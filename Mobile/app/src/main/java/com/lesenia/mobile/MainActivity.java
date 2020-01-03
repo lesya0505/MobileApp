@@ -33,15 +33,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
-        floatingActionButton.setOnClickListener(view ->
-                startActivity(new Intent(MainActivity.this, PostMedicineActivity.class)));
+
+        floatingActionButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, PostMedicineActivity.class)));
 
         final TabLayout tabLayout = findViewById(R.id.main_activity_tab);
         new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> tab.setText(tabTitles[position])
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText(tabTitles[position]);
+                    }
+                }
         ).attach();
-        FirebaseMessaging.getInstance().subscribeToTopic("NEWS");
-
     }
 
         private void initViews() {
@@ -50,5 +53,6 @@ public class MainActivity extends AppCompatActivity {
             TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager(), getLifecycle());
             viewPager.setAdapter(tabsAdapter);
         }
+
 
     }
