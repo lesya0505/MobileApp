@@ -65,21 +65,21 @@ public class AccountFragment extends Fragment {
         usernameSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onPressUsernameUpdateBtn();
+                AccountFragment.this.onPressUsernameUpdateBtn();
             }
         });
 
         emailSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onPressEmailUpdateBtn();
+                AccountFragment.this.onPressEmailUpdateBtn();
             }
         });
 
         pictureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadProfilePicture();
+                AccountFragment.this.uploadProfilePicture();
             }
         });
 
@@ -118,12 +118,7 @@ public class AccountFragment extends Fragment {
         if (requestCode == 1){
             if (resultCode == RESULT_OK){
                 Uri ImageData = Objects.requireNonNull(data).getData();
-                ImageName.putFile(Objects.requireNonNull(ImageData)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(getActivity(),getString(R.string.image_uploaded),Toast.LENGTH_SHORT).show();
-                    }
-                });
+                ImageName.putFile(Objects.requireNonNull(ImageData)).addOnSuccessListener(taskSnapshot -> Toast.makeText(getActivity(),getString(R.string.image_uploaded),Toast.LENGTH_SHORT).show());
 
                 placeImage();
             }
@@ -152,12 +147,7 @@ public class AccountFragment extends Fragment {
     }
 
     private void placeImage(){
-        ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri.toString()).into(avatarPicture);
-            }
-        });
+        ImageName.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri.toString()).into(avatarPicture));
     }
 
     private void updateUsername(FirebaseUser user, String newName){
@@ -166,23 +156,17 @@ public class AccountFragment extends Fragment {
                 .build();
 
         user.updateProfile(profileUpdates)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(getActivity(),getString(R.string.username_updated), Toast.LENGTH_SHORT).show();
-                        }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        Toast.makeText(getActivity(),getString(R.string.username_updated), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void updateEmail(FirebaseUser user, final String newEmail){
-        user.updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(getActivity(),getString(R.string.email_updated),Toast.LENGTH_SHORT).show();
-                email.setText(newEmail);
-            }
+        user.updateEmail(newEmail).addOnCompleteListener(task -> {
+            Toast.makeText(getActivity(),getString(R.string.email_updated),Toast.LENGTH_SHORT).show();
+            email.setText(newEmail);
         });
     }
 

@@ -45,6 +45,7 @@ public class NotificationService extends com.google.firebase.messaging.FirebaseM
             Log.d(TAG, "Message Notification Body: " + message);
             Log.d(TAG, "Message Notification click_action: " + click_action);
 
+            assert click_action != null;
             sendNotification(title, message,click_action);
         }
     }
@@ -79,9 +80,10 @@ public class NotificationService extends com.google.firebase.messaging.FirebaseM
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager;
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+        assert notificationManager != null;
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }
 }

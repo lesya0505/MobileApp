@@ -22,6 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PostMedicineActivity"
+            android:label="Add Medicine"/>
         <activity android:name=".DetailsActivity"
             android:label="Details"/>
         <activity android:name=".NotificationsActivity">

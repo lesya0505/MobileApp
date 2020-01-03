@@ -48,7 +48,12 @@
     <string name="title_activity_post">PostActivity</string>
     <string name="notification">Notification is opened!</string>
     <string name="list_updated">List updated!</string>
-    <string name="show">Show</string>>
+    <string name="show">Show</string>
+    <string name="add_medecine">Add medecine</string>
+    <string name="required">Recuired</string>
+    <string name="submit">Submit</string>
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
 
 </resources>
 

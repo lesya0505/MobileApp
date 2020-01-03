@@ -30,9 +30,6 @@ public class ListFragment extends Fragment {
     private LinearLayout linearLayout;
     private PharmacyAdapter adapter;
 
-    public ListFragment() {
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,12 +60,9 @@ public class ListFragment extends Fragment {
 
     private void setupSwipeToRefresh() {
         swipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        loadPharmacy();
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
+                () -> {
+                    loadPharmacy();
+                    swipeRefreshLayout.setRefreshing(false);
                 }
         );
     }
